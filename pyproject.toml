@@ -1,0 +1,69 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "dialog-engine"
+version = "0.1.0"
+description = "JSON-driven step dialog engine with conditional steps and optional aiogram helpers"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+keywords = ["dialog", "wizard", "steps", "json", "telegram", "aiogram"]
+authors = [
+    { name = "Danila Shubin", email = "den03062003@gmail.com" },
+    { name = "Saveliy Khvostov", email = "khvostov40@gmail.com" },
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: Other/Proprietary License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Typing :: Typed",
+]
+
+dependencies = []
+
+[project.optional-dependencies]
+validation = ["pydantic>=2.0,<3"]
+yaml = ["PyYAML>=6.0"]
+aiogram = ["aiogram>=3.0,<4"]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=4.0",
+    "ruff>=0.8.0",
+    "pydantic>=2.0,<3",
+    "PyYAML>=6.0",
+    "aiogram>=3.0,<4",
+]
+
+[project.urls]
+Homepage = "https://github.com/ShyDamn/dialog-engine"
+Documentation = "https://github.com/ShyDamn/dialog-engine#readme"
+Repository = "https://github.com/ShyDamn/dialog-engine"
+Issues = "https://github.com/ShyDamn/dialog-engine/issues"
+
+[project.scripts]
+dialog-engine-validate = "dialog_engine.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/dialog_engine"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "RUF"]
+ignore = [
+    "RUF002",
+    "RUF003",
+]
