@@ -109,3 +109,9 @@ class DialogEngine:
         for i, s in enumerate(self.steps):
             if step_is_visible(s, context):
                 yield i, s
+
+    def validation_errors(self) -> list[str]:
+        """Проверка целостности (дубликаты ``id``, пустой список шагов и т.д.)."""
+        from dialog_engine.validation import validate_engine
+
+        return validate_engine(self)

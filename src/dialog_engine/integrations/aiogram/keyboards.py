@@ -123,3 +123,29 @@ def build_photo_keyboard(
         [InlineKeyboardButton(text=translate(back_label_key), callback_data=cb.back)]
     )
     return InlineKeyboardMarkup(inline_keyboard=rows)
+
+
+def parse_choice_callback(
+    callback_data: str,
+    callbacks: KeyboardCallbacks | None = None,
+) -> tuple[str, str] | None:
+    """Разбирает ``callback_data`` вида ``{choice_prefix}:{step_id}:{key}``.
+
+    Возвращает ``(step_id, choice_key)`` или ``None``, если строка не совпала.
+    """
+    cb = callbacks or KeyboardCallbacks()
+    prefix = f"{cb.choice_prefix}:"
+    if not callback_data.startswith(prefix):
+        return None
+    rest = callback_data[len(prefix) :]
+    if ":" not in rest:
+        return None
+    step_id, choice_key = rest.split(":", 1)
+    if not step_id:
+        return None
+    return step_id, choice_key
+
+
+def is_named_callback(callback_data: str, value: str) -> bool:
+    """Точное совпадение с фиксированным значением (например ``dialog_skip``)."""
+    return callback_data == value

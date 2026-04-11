@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "dialog-engine"
-version = "0.1.0"
+version = "0.1.1"
 description = "JSON-driven step dialog engine with conditional steps and optional aiogram helpers"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -48,10 +48,16 @@ Repository = "https://github.com/ShyDamn/dialog-engine"
 Issues = "https://github.com/ShyDamn/dialog-engine/issues"
 
 [project.scripts]
-dialog-engine-validate = "dialog_engine.cli:main"
+dialog-engine = "dialog_engine.cli:main"
+dialog-engine-validate = "dialog_engine.cli:main_validate"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/dialog_engine"]
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+  "/PUBLISHING.md",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

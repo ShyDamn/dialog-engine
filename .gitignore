@@ -1,3 +1,5 @@
+# локальные заметки о релизе не коммитить (инструкции — в README)
+PUBLISHING.md
 dist/
 build/
 *.egg-info/
