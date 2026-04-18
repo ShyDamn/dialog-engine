@@ -328,8 +328,6 @@ python -m dialog_engine путь/к/диалог.json
 | **Данила Шубин** | [@ShyDamn](https://github.com/ShyDamn) | [den03062003@gmail.com](mailto:den03062003@gmail.com) |
 | **Савелий Хвостов** | [@k0te1ch](https://github.com/k0te1ch) | [khvostov40@gmail.com](mailto:khvostov40@gmail.com) |
 
-Репозиторий: [github.com/ShyDamn/dialog-engine](https://github.com/ShyDamn/dialog-engine).
-
 ---
 
 ## Лицензия
